@@ -18,39 +18,33 @@ def select_random_item(current_list):
         else:
             return select_random_item(current_list)
 
-def run_confirm_my_trip():
+def run_confirm_my_trip(dest, rest, entertainment, trans):
     active = True
     while active == True:
-        
         confirmed_trip = input("Are you satisfied with this trip (y/n)? ")
         if confirmed_trip == "y":
             active = False
             print("Your trip is complete!")
-            print("You are going to"+ " " + chosen_dest)
-            print("You will be eating at" + " " + chosen_rest)
-            print("For enjoyment you can enjoy" + " " + chosen_entertainment)
-            print("You will get there by" + " " + chosen_trans)
+            print("You are going to" + " " + dest)
+            print("You will be eating at" + " " + rest)
+            print("For enjoyment you can enjoy" + " " + entertainment)
+            print("You will get there by" + " " + trans)
         else:
-            return select_random_item()   
+            run_selection() 
 
+def run_selection():
+    chosen_dest = select_random_item(my_destinations)
+    chosen_rest = select_random_item(my_restaurants)
+    chosen_entertainment = select_random_item(my_entertainment)
+    chosen_trans = select_random_item(my_transportation)
+    print()
+    print("Your chosen destination is" + " " + chosen_dest)
+    print("Your chosen restaurant is" + " " + chosen_rest)
+    print("Your chosen entertainment is" + " " + chosen_entertainment)
+    print("Your chosen transportation is by" + " " + chosen_trans)
+    print()
+    run_confirm_my_trip(chosen_dest, chosen_rest, chosen_entertainment, chosen_trans)
 
-chosen_dest = select_random_item(my_destinations)
-chosen_rest = select_random_item(my_restaurants)
-chosen_entertainment = select_random_item(my_entertainment)
-chosen_trans = select_random_item(my_transportation)
-print("Your chosen destination is" + " " + chosen_dest)
-print("Your chosen restaurant is" + " " + chosen_rest)
-print("Your chosen entertainment is" + " " + chosen_entertainment)
-print("Your chosen transportation is by" + " " + chosen_trans)
-print()
-
-run_confirm_my_trip()
-
-
-
-
-
-
-
+run_selection()
 
 
